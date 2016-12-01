@@ -1,4 +1,4 @@
-package de.tudarmstadt.ukp.dkpro.core.stagger;
+package org.dkpro.core.stagger;
 
 import java.io.IOException;
 import java.io.StringReader;

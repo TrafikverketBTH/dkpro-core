@@ -1,4 +1,4 @@
-package de.tudarmstadt.ukp.dkpro.core.stagger;
+package org.dkpro.core.stagger;
 
 import static org.apache.uima.fit.factory.AnalysisEngineFactory.createEngine;
 import static org.apache.uima.fit.util.JCasUtil.select;
@@ -6,6 +6,7 @@ import static org.apache.uima.fit.util.JCasUtil.select;
 import org.apache.uima.analysis_engine.AnalysisEngine;
 import org.apache.uima.fit.factory.JCasFactory;
 import org.apache.uima.jcas.JCas;
+import org.dkpro.core.stagger.StockholmSegmenter;
 import org.junit.Before;
 import org.junit.Test;
 

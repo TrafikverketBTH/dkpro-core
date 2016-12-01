@@ -1,4 +1,4 @@
-package de.tudarmstadt.ukp.dkpro.core.stagger;
+package org.dkpro.core.stagger;
 
 import static org.apache.uima.fit.util.JCasUtil.select;
 import static org.apache.uima.fit.util.JCasUtil.selectCovered;
