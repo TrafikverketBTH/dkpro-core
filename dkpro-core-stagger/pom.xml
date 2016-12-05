@@ -64,9 +64,9 @@
       <artifactId>de.tudarmstadt.ukp.dkpro.core.api.parameter-asl</artifactId>
     </dependency>
     <dependency>
-      <groupId>de.tudarmstadt.ukp.dkpro.core</groupId>
-      <artifactId>de.tudarmstadt.ukp.dkpro.core.stagger-model-tagger-sv-suctags</artifactId>
-      <version>20161113</version>
+      <groupId>org.dkpro.core</groupId>
+      <artifactId>dkpro-core-stagger-model-tagger-sv-suctags</artifactId>
+      <version>20160211.0</version>
     </dependency>
     <dependency>
       <groupId>junit</groupId>
