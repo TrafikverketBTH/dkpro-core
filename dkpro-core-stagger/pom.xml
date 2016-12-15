@@ -9,6 +9,18 @@
   <artifactId>org.dkpro.core.stagger</artifactId>
   <version>1.0.0-SNAPSHOT</version>
   <name>DKPro Core GPL - Stockholm Tagger (Stagger)</name>
+  <build>
+    <plugins>
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-surefire-plugin</artifactId>
+        <configuration>
+        	<!-- Running tests, loading the model, needs more than the standard allocated memory -->
+            <argLine>-Xmx2048m</argLine>
+        </configuration>
+      </plugin>
+    </plugins>
+  </build>
   <dependencies>
   	<dependency>
   		<groupId>se.bth.serl</groupId>
