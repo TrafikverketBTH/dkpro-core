@@ -11,10 +11,9 @@ import org.junit.Before;
 import org.junit.Test;
 
 import de.tudarmstadt.ukp.dkpro.core.api.segmentation.type.Sentence;
-import de.tudarmstadt.ukp.dkpro.core.api.segmentation.type.Token;
 import de.tudarmstadt.ukp.dkpro.core.testing.AssertAnnotations;
 
-public class StockholmSegmenterTest
+public class StockholmAbbreviationsSegmenterTest
 {
     JCas jcas;
     
@@ -23,24 +22,17 @@ public class StockholmSegmenterTest
     {
         jcas = JCasFactory.createJCas();
         jcas.setDocumentLanguage("sv");
-        jcas.setDocumentText("Det är enkelt (ex. biljetthallar m.m.). Det åckso, men inte så mycket!? SMS:a mig.");
+        jcas.setDocumentText("Plats för radiokommunikationsantenner, ex. UMTS, GSM, GSM-R samt övriga radiosystem, ska finnas i stora allmänna platser (ex. biljetthallar m.m.) där läckande kabel ej kan monteras.");
         
         AnalysisEngine aed = createEngine(StockholmSegmenter.class);
         aed.process(jcas);
     }
     
     @Test
-    public void testTokens()
-    {   
-        String[] tokens = { "Det", "är", "enkelt", "(", "ex.", "biljetthallar", "m.m.", ")", ".", 
-        		"Det", "åckso", ",", "men", "inte", "så", "mycket", "!?", "SMS:a", "mig", "."};   
-        AssertAnnotations.assertToken(tokens, select(jcas, Token.class));
-    }
-    
-    @Test
-    public void testSentencesWithAbbreviations()
+    public void testAbbreviations()
     {
-        String[] sentences = {"Det är enkelt (ex. biljetthallar m.m.).", "Det åckso, men inte så mycket!?", "SMS:a mig."};
+        String[] sentences = {"Plats för radiokommunikationsantenner, ex. UMTS, GSM, GSM-R samt övriga radiosystem, ska finnas i stora allmänna platser (ex. biljetthallar m.m.) där läckande kabel ej kan monteras."};
         AssertAnnotations.assertSentence(sentences, select(jcas, Sentence.class));
     }
+
 }
