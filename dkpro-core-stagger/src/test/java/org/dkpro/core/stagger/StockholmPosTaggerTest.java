@@ -34,13 +34,16 @@ public class StockholmPosTaggerTest
         String[] posOriginal = { "PP", "NN", "VB", "NN", "RG", "NN", "PP", "NN", "MAD" };
         //Mapping retrieved from dkpro-core-api-lexmorph-asl/src/main/resources/desc/type/POS.xml
         String[] posMapped = { "ADP", "NOUN", "VERB", "NOUN", "NUM", "NOUN", "ADP", "NOUN", "PUNCT" };
-        String[] morph = { 
+        String[] morph = {
+        		"[  0,  3]     -     -    -    -    -     -    -    -     -      -  -    -    -    -     -      -     - För (_)",
                 "[  4, 22]     -     -  Nom  Ind    -   Com    -    -  Sing      -  -    -    -    -     -      -     - telefonrådfrågning (UTR|SIN|IND|NOM)", 
                 "[ 23, 30]     -     -    -    -    -     -    -    -     -      -  -    -    -    -  Pres      -   Act betalar (PRS|AKT)", 
                 "[ 31, 48]     -     -  Nom  Def    -   Com    -    -  Sing      -  -    -    -    -     -      -     - försäkringskassan (UTR|SIN|DEF|NOM)", 
                 "[ 49, 50]     -     -  Nom    -    -     -    -    -     -      -  -    -    -    -     -      -     - 4 (NOM)", 
-                "[ 51, 57]     -     -  Nom  Ind    -   Com    -    -  Plur      -  -    -    -    -     -      -     - kronor (UTR|PLU|IND|NOM)", 
-                "[ 63, 83]     -     -  Nom  Def    -   Com    -    -  Sing      -  -    -    -    -     -      -     - sjukvårdshuvudmannen (UTR|SIN|DEF|NOM)"
+                "[ 51, 57]     -     -  Nom  Ind    -   Com    -    -  Plur      -  -    -    -    -     -      -     - kronor (UTR|PLU|IND|NOM)",
+                "[ 58, 62]     -     -    -    -    -     -    -    -     -      -  -    -    -    -     -      -     - till (_)",
+                "[ 63, 83]     -     -  Nom  Def    -   Com    -    -  Sing      -  -    -    -    -     -      -     - sjukvårdshuvudmannen (UTR|SIN|DEF|NOM)",
+                "[ 83, 84]     -     -    -    -    -     -    -    -     -      -  -    -    -    -     -      -     - . (_)"
         };
        
         
