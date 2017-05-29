@@ -92,7 +92,8 @@ import de.tudarmstadt.ukp.dkpro.core.api.syntax.type.dependency.ROOT;
                 "de.tudarmstadt.ukp.dkpro.core.api.segmentation.type.Sentence",
                 "de.tudarmstadt.ukp.dkpro.core.api.segmentation.type.Token",
                 "de.tudarmstadt.ukp.dkpro.core.api.segmentation.type.Lemma",
-                "de.tudarmstadt.ukp.dkpro.core.api.lexmorph.type.pos.POS"},
+                "de.tudarmstadt.ukp.dkpro.core.api.lexmorph.type.pos.POS",
+                "de.tudarmstadt.ukp.dkpro.core.api.lexmorph.type.morph.MorphologicalFeatures"},
         outputs={
                 "de.tudarmstadt.ukp.dkpro.core.api.syntax.type.dependency.Dependency"})
 
@@ -197,13 +198,14 @@ public class MaltParser
 				try {
 				    // Warn if the model uses features that we currently do not support
 				    features = getFeatures(aUrl);
+				    features.add("CPOSTAG");
 				    Set<String> unsupportedFeatures = new HashSet<String>(features);
 				    getLogger().info("Model uses these features: " + features);
 				    unsupportedFeatures.remove("FORM"); // we know covered text
 				    unsupportedFeatures.remove("LEMMA"); // we know lemma if lemmatizer ran before
 				    unsupportedFeatures.remove("POSTAG"); // we know POS tag if POS tagger ran before
-				    // CPOSTAG - only supported if we know a mapping from POSTAG to CPOSTAG (FIXME)
-				    // FEATS - not properly supported in DKPro Core yet! (FIXME)
+				    unsupportedFeatures.remove("CPOSTAG"); // the Swedish model does not work without CPOSTAGS
+				    unsupportedFeatures.remove("FEATS");
                     if (!unsupportedFeatures.isEmpty()) {
                         String message = "Model these uses unsupported features: " + unsupportedFeatures;
                         if (ignoreMissingFeatures) {
@@ -339,11 +341,13 @@ public class MaltParser
                 // categories required by the model. We would need to include a mapping with the
                 // model to recover the required coarse grained categories from the fine-grained
                 // categories in POSTAG.
+				// For the Swedish model, such a mapping exists here:
+				// https://stp.lingfil.uu.se/~nivre/research/tag_map.html
                 if (features.contains("CPOSTAG")) {
-//                    if (t.getPos() != null) {
-//                        cpostag = t.getPos().getPosValue();
-//                    }
-//                    else 
+                    if (t.getPos() != null) {
+                        cpostag = t.getPos().getPosValue();
+                    }
+                    else 
                     if (!ignoreMissingFeatures) {
                         throw new IllegalStateException(
                                 "Model uses feature CPOSTAG but there is no part-of-speech information in CAS");
