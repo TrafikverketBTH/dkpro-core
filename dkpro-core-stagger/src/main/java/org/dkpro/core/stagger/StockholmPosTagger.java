@@ -151,9 +151,15 @@ public class StockholmPosTagger
                             posAnno.addToIndexes();
                             token.setPos(posAnno);
                             
-                            if(writeMorph && pos.length > 1) {
-                                MorphologicalFeatures analysis = featuresParser.parse(aJCas, token, pos[1]);
-                                token.setMorph(analysis);
+                            if(writeMorph) {
+                            	if(pos.length > 1) {
+                            		MorphologicalFeatures analysis = featuresParser.parse(aJCas, token, pos[1]);
+                            		token.setMorph(analysis);
+                            	}
+                            	else {
+                            		MorphologicalFeatures analysis = featuresParser.parse(aJCas, token, "_");
+                            		token.setMorph(analysis);
+                            	}
                             }
                         }
                     }
