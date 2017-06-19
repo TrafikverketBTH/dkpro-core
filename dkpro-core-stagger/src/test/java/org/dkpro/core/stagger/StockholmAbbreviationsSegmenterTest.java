@@ -22,7 +22,8 @@ public class StockholmAbbreviationsSegmenterTest
     {
         jcas = JCasFactory.createJCas();
         jcas.setDocumentLanguage("sv");
-        jcas.setDocumentText("Plats för radiokommunikationsantenner, ex. UMTS, GSM, GSM-R samt övriga radiosystem, ska finnas i stora allmänna platser (ex. biljetthallar m.m.) där läckande kabel ej kan monteras.");
+        jcas.setDocumentText("Plats för radiokommunikationsantenner, ex. UMTS, GSM, GSM-R samt övriga radiosystem, ska finnas i stora allmänna platser (ex. biljetthallar m.m.) där läckande kabel ej kan monteras. "
+        		+ "Kraftaggregat till arbetsmaskiner ex. kompressorer m.m. samt andra arbetsredskap som stadigvarande används i leveransen (mer än 100 arbetstimmar) ska i första hand vara eldrivna.");
         
         AnalysisEngine aed = createEngine(StockholmSegmenter.class);
         aed.process(jcas);
@@ -31,7 +32,8 @@ public class StockholmAbbreviationsSegmenterTest
     @Test
     public void testAbbreviations()
     {
-        String[] sentences = {"Plats för radiokommunikationsantenner, ex. UMTS, GSM, GSM-R samt övriga radiosystem, ska finnas i stora allmänna platser (ex. biljetthallar m.m.) där läckande kabel ej kan monteras."};
+        String[] sentences = {"Plats för radiokommunikationsantenner, ex. UMTS, GSM, GSM-R samt övriga radiosystem, ska finnas i stora allmänna platser (ex. biljetthallar m.m.) där läckande kabel ej kan monteras.", 
+        		"Kraftaggregat till arbetsmaskiner ex. kompressorer m.m. samt andra arbetsredskap som stadigvarande används i leveransen (mer än 100 arbetstimmar) ska i första hand vara eldrivna."};
         AssertAnnotations.assertSentence(sentences, select(jcas, Sentence.class));
     }
 
