@@ -5,7 +5,7 @@ import org.junit.runners.Suite;
 import org.junit.runners.Suite.SuiteClasses;
 
 @RunWith(Suite.class)
-@SuiteClasses({ StockholmAbbreviationsSegmenterTest.class, StockholmPosTaggerTest.class, StockholmSegmenterTest.class })
+@SuiteClasses({ StockholmAbbreviationsSegmenterTest.class, StockholmPosTaggerTest.class, StockholmSegmenterTest.class, StockholmSegmenterSectionNumbersTest.class })
 public class AllTests {
 
 }

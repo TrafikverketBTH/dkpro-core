@@ -33,7 +33,7 @@ public class StockholmPosTaggerTest
         String[] lemmas = { "för", "telefonrådfrågning", "betala", "försäkringskassa", "4", "krona", "till", "sjukvårdshuvudman", "." };
         String[] posOriginal = { "PP", "NN", "VB", "NN", "RG", "NN", "PP", "NN", "MAD" };
         //Mapping retrieved from dkpro-core-api-lexmorph-asl/src/main/resources/desc/type/POS.xml
-        String[] posMapped = { "ADP", "NOUN", "VERB", "NOUN", "NUM", "NOUN", "ADP", "NOUN", "PUNCT" };
+        String[] posMapped = { "POS_ADP", "POS_NOUN", "POS_VERB", "POS_NOUN", "POS_NUM", "POS_NOUN", "POS_ADP", "POS_NOUN", "POS_PUNCT" };
         String[] morph = {
         		"[  0,  3]     -     -    -    -    -     -    -    -     -      -  -    -    -    -     -      -     - För (_)",
                 "[  4, 22]     -     -  Nom  Ind    -   Com    -    -  Sing      -  -    -    -    -     -      -     - telefonrådfrågning (UTR|SIN|IND|NOM)", 
